@@ -1,0 +1,25 @@
+Builds ffmpeg from sources including dependencies
+Runs on centos 7, should also work from el7
+
+Contents:
+
+* build.sh - builds the docker image and invokes the ffmpeg compilation
+
+* Dockerfile - defines the contents of the image
+
+* build-ffmpeg.sh - a script to download and build ffmpeg and dependencies
+
+* ffmpeg  - is a convenience script that runs the container & passes any additional args
+
+Usage:
+
+$ ./build.sh
+$ docker push gonewest/ffmpeg
+
+'ffmpeg' also bind mounts the current working directory as "/data"
+such that, for instance, if you have a foo.mp4 in the current directory you would
+do this to convert it to webm:
+
+  ffmpeg -i /data/foo.mp4 /data/foo.webm
+
+
